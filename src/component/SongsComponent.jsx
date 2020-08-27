@@ -48,7 +48,6 @@ class SongsComponent extends Component {
     componentDidMount() {
         SongsService.retrieveAllSongs()
             .then(response => {
-                // console.log(response)
                 this.setState({
                     songs: response.data
                 })
