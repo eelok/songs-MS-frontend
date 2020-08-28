@@ -35,7 +35,7 @@ class SongsComponent extends Component {
                                     <td>{song.title}</td>
                                     <td>{song.artist}</td>
                                     <td>{song.label}</td>
-                                    <tr>{song.released}</tr>
+                                    <td>{song.released}</td>
                                 </tr>
                             )
                         }
