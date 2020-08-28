@@ -4,14 +4,20 @@ class SongsService {
 
     retrieveAllSongs(){
         return axios.get("http://localhost:8082/songs", {headers: {
-            "Authorization": "vI9mau8Lh7HFI0zi"
+            "Authorization": "p79QDWK1aCAACj4r"
             }});
     }
 
     deleteSong(id){
         return axios.delete(`http://localhost:8082/songs/${id}`, {headers: {
-            "Authorization": "vI9mau8Lh7HFI0zi"}})
+            "Authorization": "p79QDWK1aCAACj4r"}})
     }
+
+    retrieveSingleSong(id){
+        axios.get(`http://localhost:8082/songs/${id}`, {headers: {
+            "Authorization": "p79QDWK1aCAACj4r"}})
+    }
+
 }
 
 export default new SongsService();
