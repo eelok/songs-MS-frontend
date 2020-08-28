@@ -13,6 +13,7 @@ class SongsComponent extends Component {
         }
 
         this.deleteSongClicked = this.deleteSongClicked.bind(this);
+        this.updateSongClicked = this.updateSongClicked.bind(this);
     }
 
     render() {
@@ -27,6 +28,7 @@ class SongsComponent extends Component {
                         <th>Artist</th>
                         <th>Label</th>
                         <th>Released</th>
+                        <th>Update</th>
                         <td>Delete</td>
                     </tr>
                     </thead>
@@ -40,11 +42,13 @@ class SongsComponent extends Component {
                                 <td>{song.label}</td>
                                 <td>{song.released}</td>
                                 <td>
+                                    <button onClick={() => this.updateSongClicked(song.id)}>Update</button>
+                                </td>
+                                <td>
                                     <button onClick={() => this.deleteSongClicked(song.id)}>Delete</button>
                                 </td>
                             </tr>
-                    )
-                    }
+                    )}
                     </tbody>
                 </table>
             </div>
@@ -73,6 +77,10 @@ class SongsComponent extends Component {
                 })
                 this.refreshSongs()
             })
+    }
+
+    updateSongClicked(id) {
+        this.props.history.push(`/songs/${id}`)
     }
 }
 
