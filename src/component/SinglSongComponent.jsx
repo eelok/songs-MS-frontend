@@ -69,7 +69,7 @@ class SingleSongComponent extends Component {
                         title: response.data.title,
                         artist: response.data.artist,
                         label: response.data.label,
-                        released: response.data.label
+                        released: response.data.released
                     })
                 }
             )

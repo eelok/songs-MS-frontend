@@ -14,7 +14,7 @@ class SongsService {
     }
 
     retrieveSingleSong(id){
-        axios.get(`http://localhost:8082/songs/${id}`, {headers: {
+        return axios.get(`http://localhost:8082/songs/${id}`, {headers: {
             "Authorization": "p79QDWK1aCAACj4r"}})
     }
 
