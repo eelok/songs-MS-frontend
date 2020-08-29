@@ -18,6 +18,11 @@ class SongsService {
             "Authorization": "p79QDWK1aCAACj4r"}})
     }
 
+    retrieveUpdateSong(id, song){
+        return axios.put(`http://localhost:8082/songs/${id}`, song, {headers: {
+                "Authorization": "p79QDWK1aCAACj4r"}})
+    }
+
 }
 
 export default new SongsService();

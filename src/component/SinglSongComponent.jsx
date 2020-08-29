@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {Form, Formik, Field} from 'formik';
 import SongsService from "../service/SongsService";
+
 
 class SingleSongComponent extends Component {
 
@@ -15,51 +15,51 @@ class SingleSongComponent extends Component {
             label: '',
             released: ''
         }
+
+        this.handleSaveClicked = this.handleSaveClicked.bind(this)
     }
 
     render() {
-        let title = this.state.title;
-        let artist = this.state.artist;
-        let label = this.state.label;
-        let released = this.state.released;
 
         return (
             <div>
                 <h1>Song</h1>
-                <Formik initialValues={{
-                    title: title,
-                    artist: artist,
-                    label: label,
-                    released: released
-                }}
-                        enableReinitialize={true}
-                >
-                    <div>
-                        <Form>
-                            <fieldset>
-                                <label>Title</label>
-                                <Field type="text" name="title"/>
-                            </fieldset>
-                            <fieldset>
-                                <label>Artist</label>
-                                <Field type="text" name="artist"/>
-                            </fieldset>
-                            <fieldset>
-                                <label>Label</label>
-                                <Field type="text" name="label"/>
-                            </fieldset>
-                            <fieldset>
-                                <label>Released</label>
-                                <Field type="number" name="released"/>
-                            </fieldset>
-                            <button>Save</button>
-                        </Form>
-                    </div>
-
-                </Formik>
-
+                <div>
+                    <form onSubmit={this.handleSaveClicked}>
+                        <div>
+                            Title:
+                            <input type="text" name="title" defaultValue={this.state.title} required/>
+                        </div>
+                        <div>
+                            Artist:
+                            <input type="text" name="artist" defaultValue={this.state.artist} required/>
+                        </div>
+                        <div>
+                            Label:
+                            <input type="text" name="label" defaultValue={this.state.label} required/>
+                        </div>
+                        <div>
+                            Released:
+                            <input type="number" name="released" defaultValue={this.state.released} required/>
+                        </div>
+                        <button type="submit">Save</button>
+                    </form>
+                </div>
             </div>
         )
+    }
+
+    handleSaveClicked(event) {
+        let formData = new FormData(event.target);
+        let song = Object.fromEntries(formData);
+        song.id = this.state.id
+        console.log(song);
+
+        event.preventDefault();
+        SongsService.retrieveUpdateSong(this.state.id, song)
+            .then(() => {
+                this.props.history.push('/songs')
+            });
     }
 
     componentDidMount() {
