@@ -52,17 +52,26 @@ class SingleSongComponent extends Component {
     handleSaveClicked(event) {
         let formData = new FormData(event.target);
         let song = Object.fromEntries(formData);
-        song.id = this.state.id
-        console.log(song);
-
         event.preventDefault();
-        SongsService.retrieveUpdateSong(this.state.id, song)
-            .then(() => {
-                this.props.history.push('/songs')
-            });
+        if(parseInt(this.state.id) === -1){
+            SongsService.createSong(song)
+                .then(() => {
+                    this.props.history.push('/songs')
+                })
+        } else {
+            song.id = this.state.id
+            SongsService.updateSong(this.state.id, song)
+                .then(() => {
+                    this.props.history.push('/songs')
+                });
+        }
+
     }
 
     componentDidMount() {
+        if(parseInt(this.state.id) === -1){
+            return ;
+        }
         SongsService.retrieveSingleSong(this.state.id)
             .then(response => {
                     this.setState({

@@ -14,6 +14,7 @@ class SongsComponent extends Component {
 
         this.deleteSongClicked = this.deleteSongClicked.bind(this);
         this.updateSongClicked = this.updateSongClicked.bind(this);
+        this.addSongClicked = this.addSongClicked.bind(this);
     }
 
     render() {
@@ -51,7 +52,13 @@ class SongsComponent extends Component {
                     )}
                     </tbody>
                 </table>
+
+                <div>
+                    <button onClick={this.addSongClicked}>Add</button>
+                </div>
             </div>
+
+
         )
     }
 
@@ -81,6 +88,10 @@ class SongsComponent extends Component {
 
     updateSongClicked(id) {
         this.props.history.push(`/songs/${id}`)
+    }
+
+    addSongClicked(){
+        this.props.history.push(`/songs/-1`)
     }
 }
 
