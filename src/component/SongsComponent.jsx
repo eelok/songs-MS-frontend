@@ -19,6 +19,10 @@ class SongsComponent extends Component {
     }
 
     render() {
+        const isUserLoggedIn = AuthenticationService.getToken();
+        if(!isUserLoggedIn){
+            this.props.history.push(`/login`)
+        }
         return (
             <div>
                 <h1>List of Songs</h1>

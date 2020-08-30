@@ -10,6 +10,10 @@ class AuthenticationService {
         return axios.post("http://localhost:8081/rest/auth/", user)
     }
 
+    logout(){
+        sessionStorage.removeItem('userToken');
+    }
+
 
 }
 
