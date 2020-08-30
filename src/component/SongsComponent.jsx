@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SongsService from "../service/SongsService";
+import AuthenticationService from "../service/AuthenticationService";
 
 
 class SongsComponent extends Component {
@@ -43,7 +44,7 @@ class SongsComponent extends Component {
                                 <td>{song.label}</td>
                                 <td>{song.released}</td>
                                 <td>
-                                    <button onClick={() => this.updateSongClicked(song.id)}>Update</button>
+                                    <button onClick={() => this.updateSongClicked(song.id)}>Edit</button>
                                 </td>
                                 <td>
                                     <button onClick={() => this.deleteSongClicked(song.id)}>Delete</button>
@@ -67,7 +68,8 @@ class SongsComponent extends Component {
     }
 
     refreshSongs() {
-        SongsService.retrieveAllSongs()
+        const token = AuthenticationService.getToken();
+        SongsService.retrieveAllSongs(token)
             .then(response => {
                 this.setState({
                     songs: response.data
@@ -76,7 +78,8 @@ class SongsComponent extends Component {
     }
 
     deleteSongClicked(id) {
-        SongsService.deleteSong(id)
+        let token = AuthenticationService.getToken();
+        SongsService.deleteSong(token, id)
             .then(response => {
                 this.setState({
                     message: `song ${id} was deleted`,

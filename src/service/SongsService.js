@@ -2,30 +2,30 @@ import axios from 'axios';
 
 class SongsService {
 
-    retrieveAllSongs(){
+    retrieveAllSongs(token){
         return axios.get("http://localhost:8082/songs", {headers: {
-            "Authorization": "p79QDWK1aCAACj4r"
+            "Authorization": token
             }});
     }
 
-    retrieveSingleSong(id){
+    retrieveSingleSong(token, id){
         return axios.get(`http://localhost:8082/songs/${id}`, {headers: {
-                "Authorization": "p79QDWK1aCAACj4r"}})
+                "Authorization": token}})
     }
 
-    deleteSong(id){
+    deleteSong(token, id){
         return axios.delete(`http://localhost:8082/songs/${id}`, {headers: {
-            "Authorization": "p79QDWK1aCAACj4r"}})
+            "Authorization": token}})
     }
 
-    updateSong(id, song){
+    updateSong(token, id, song){
         return axios.put(`http://localhost:8082/songs/${id}`, song, {headers: {
-                "Authorization": "p79QDWK1aCAACj4r"}})
+                "Authorization": token}})
     }
 
-    createSong(song){
+    createSong(token, song){
         return axios.post("http://localhost:8082/songs", song, {headers: {
-                "Authorization": "p79QDWK1aCAACj4r"}})
+                "Authorization": token}})
     }
 
 }

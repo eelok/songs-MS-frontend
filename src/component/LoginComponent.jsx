@@ -1,29 +1,44 @@
 import React, {Component} from "react";
+import AuthenticationService from "../service/AuthenticationService";
 
 
-class LoginComponent extends Component{
+class LoginComponent extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            userName: ' ',
-            password: ' '
+            userId: '',
+            password: ''
         }
+        this.handleLoginClick = this.handleLoginClick.bind(this);
     }
 
-    render(){
+    render() {
         return (
             <div>
-                User Name: <input type="text" name="username"/>
-                Password: <input type="password" name="password"/>
-                <button onClick={this.handleLoginClick}>Login</button>
+                <form onSubmit={this.handleLoginClick}>
+                    User Name: <input type="text" name="userId"/>
+                    Password: <input type="password" name="password"/>
+                    <button>Login</button>
+                </form>
             </div>
         )
     }
 
-    handleLoginClick(){
-        console.log("login clicked")
+    handleLoginClick(event) {
+        let userInput = new FormData(event.target);
+        let userData = Object.fromEntries(userInput);
+        event.preventDefault();
+
+        AuthenticationService.allocateTokenToUser(userData)
+            .then((response) => {
+                const token = response.data;
+                sessionStorage.setItem("userToken", token)
+                this.props.history.push(`/songs`)
+            })
+
+
     }
 }
 

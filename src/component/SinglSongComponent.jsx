@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import SongsService from "../service/SongsService";
+import AuthenticationService from "../service/AuthenticationService";
 
 
 class SingleSongComponent extends Component {
@@ -53,14 +54,16 @@ class SingleSongComponent extends Component {
         let formData = new FormData(event.target);
         let song = Object.fromEntries(formData);
         event.preventDefault();
+
+        const token = AuthenticationService.getToken();
         if(parseInt(this.state.id) === -1){
-            SongsService.createSong(song)
+            SongsService.createSong(token, song)
                 .then(() => {
                     this.props.history.push('/songs')
                 })
         } else {
             song.id = this.state.id
-            SongsService.updateSong(this.state.id, song)
+            SongsService.updateSong(token, this.state.id, song)
                 .then(() => {
                     this.props.history.push('/songs')
                 });
@@ -69,10 +72,11 @@ class SingleSongComponent extends Component {
     }
 
     componentDidMount() {
+        let token = AuthenticationService.getToken();
         if(parseInt(this.state.id) === -1){
             return ;
         }
-        SongsService.retrieveSingleSong(this.state.id)
+        SongsService.retrieveSingleSong(token, this.state.id)
             .then(response => {
                     this.setState({
                         title: response.data.title,
