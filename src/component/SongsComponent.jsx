@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SongsService from "../service/SongsService";
-import AuthenticationService from "../service/AuthenticationService";
+import StorageSessionService from "../service/StorageSessionService";
 
 
 class SongsComponent extends Component {
@@ -19,7 +19,7 @@ class SongsComponent extends Component {
     }
 
     render() {
-        const isUserLoggedIn = AuthenticationService.getToken();
+        const isUserLoggedIn = StorageSessionService.getToken();
         if(!isUserLoggedIn){
             this.props.history.push(`/login`)
         }
@@ -72,7 +72,7 @@ class SongsComponent extends Component {
     }
 
     refreshSongs() {
-        const token = AuthenticationService.getToken();
+        const token = StorageSessionService.getToken();
         SongsService.retrieveAllSongs(token)
             .then(response => {
                 this.setState({
@@ -82,7 +82,7 @@ class SongsComponent extends Component {
     }
 
     deleteSongClicked(id) {
-        let token = AuthenticationService.getToken();
+        let token = StorageSessionService.getToken();
         SongsService.deleteSong(token, id)
             .then(response => {
                 this.setState({

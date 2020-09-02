@@ -2,17 +2,17 @@ import axios from 'axios';
 
 class AuthenticationService {
 
-    getToken() {
-        return sessionStorage.getItem('userToken');
+
+    ///todo delete
+    getUserId(token){
+        return axios.get(`http://localhost:8081/rest/userByToken/${token}`);
     }
 
-    allocateTokenToUser(user) {
+    authenticate(user) {
         return axios.post("http://localhost:8081/rest/auth/", user)
     }
 
-    logout(){
-        sessionStorage.removeItem('userToken');
-    }
+
 
 
 }

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import SongsService from "../service/SongsService";
-import AuthenticationService from "../service/AuthenticationService";
+import StorageSessionService from "../service/StorageSessionService";
 
 
 class SingleSongComponent extends Component {
@@ -55,7 +55,7 @@ class SingleSongComponent extends Component {
         let song = Object.fromEntries(formData);
         event.preventDefault();
 
-        const token = AuthenticationService.getToken();
+        const token = StorageSessionService.getToken();
         if(parseInt(this.state.id) === -1){
             SongsService.createSong(token, song)
                 .then(() => {
@@ -72,7 +72,7 @@ class SingleSongComponent extends Component {
     }
 
     componentDidMount() {
-        let token = AuthenticationService.getToken();
+        let token = StorageSessionService.getToken();
         if(parseInt(this.state.id) === -1){
             return ;
         }

@@ -26,19 +26,16 @@ class LoginComponent extends Component {
         )
     }
 
-    handleLoginClick(event) {
+    async handleLoginClick(event) {
         let userInput = new FormData(event.target);
         let userData = Object.fromEntries(userInput);
         event.preventDefault();
 
-        AuthenticationService.allocateTokenToUser(userData)
-            .then((response) => {
-                const token = response.data;
-                sessionStorage.setItem("userToken", token)
-                this.props.history.push(`/songs`)
-            })
-
-
+        const tokenResponse = await AuthenticationService.authenticate(userData);
+        const token = tokenResponse.data;
+        sessionStorage.setItem("userToken", token);
+        sessionStorage.setItem("userId", userData.userId);
+        this.props.history.push("/songs");
     }
 }
 
