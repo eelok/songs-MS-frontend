@@ -13,7 +13,7 @@ class HeaderComponent extends Component{
             <header>
                 <div className="navbar">
                     <h1 className="logo">
-                        Cool Logo
+                        Your Music
                     </h1>
                     <nav className="tabs">
                         <ul>

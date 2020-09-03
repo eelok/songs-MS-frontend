@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+.wrapper{
+    background: url('../images/music-people.jpg') no-repeat center center/cover;
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.wrapper .box h3{
+    font-size: 30px;
+    margin: 30px 0 15px 0;
+    color: #333;
+}
+
+.box .login-form input{
+    width: 100%;
+    height: 40px;
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 2px;
+}
+.box .login-form input:focus{
+    outline-color: #333;
+}
+.login-form ::placeholder{
+    padding-left: 10px;
+    font-size: 14px;
+}
+.btn-login{
+    height: 40px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 1px;
+    border: none;
+    display: inline-block;
+    background: #433E5C;
+    color: #fff;
+    outline: none;
+}
+
+.btn-login:hover{
+    /*background: #282c34;*/
+    opacity: 0.7;
+}

@@ -14,9 +14,13 @@ body{
     justify-content: space-between;
     width: 100%;
     height: 70px;
-    background-color: #4c6ca0;
+    /*background-color: #736969;*/
+    background-color: #5C3E48;
     padding: 0 20px;
-    opacity: 0.8
+}
+
+.navbar *{
+    z-index: 10;
 }
 .logo{
     color: #fff;
@@ -35,3 +39,5 @@ body{
 .tabs a:hover{
     border-bottom: 2px solid #fff;
 }
+
+
