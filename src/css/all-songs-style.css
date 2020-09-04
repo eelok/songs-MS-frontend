@@ -1,0 +1,73 @@
+/*base style*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.songs-container{
+    padding: 30px;
+    width: 100%;
+}
+
+.songs-container h1{
+    height: 60px;
+}
+
+.song-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #f2f2f2;
+    padding-left: 20px;
+}
+
+.song-row:hover {
+    cursor: pointer;
+    background-color: #f2f2f2;
+    border-radius: 2px;
+}
+
+
+/*// todo что-то тут не так*/
+.song-details{
+    display: flex;
+    justify-content: flex-start;
+    /*flex-grow: 1;*/
+    flex-basis: 180px;
+    text-align: left;
+}
+
+.song-title{
+    /*flex-grow: 1.5;*/
+}
+.song-artist{
+    /*flex-grow: 1.5;*/
+}
+.song-released{
+    /*flex-grow: 0.5;*/
+}
+/*//////*/
+
+.song-control{
+    display: flex;
+    justify-content: flex-end;
+    width: 400px;
+}
+.song-btn {
+    cursor: pointer;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: 1px solid #3E5C52;
+}
+
+.song-btn:hover {
+
+    background-color: #3E5C52;
+    color: #f4f4f4;
+}

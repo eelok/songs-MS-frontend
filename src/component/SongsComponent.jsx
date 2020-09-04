@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SongsService from "../service/SongsService";
 import StorageSessionService from "../service/StorageSessionService";
+import "../css/all-songs-style.css"
 
 
 class SongsComponent extends Component {
@@ -20,48 +21,43 @@ class SongsComponent extends Component {
 
     render() {
         const isUserLoggedIn = StorageSessionService.getToken();
-        if(!isUserLoggedIn){
+        if (!isUserLoggedIn) {
             this.props.history.push(`/login`)
         }
         return (
-            <div>
-                <h1>List of Songs</h1>
+            <section className="songs-container">
+                <h1>Top 10: All music genre</h1>
                 {this.state.message && <div>{this.state.message}</div>}
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Artist</th>
-                        <th>Label</th>
-                        <th>Released</th>
-                        <th>Update</th>
-                        <td>Delete</td>
-                    </tr>
-                    </thead>
+                {this.state.songs.map(
+                    song =>
+                        <div key={song.id} className="song-row">
+                            <div className="song-details song-title">
+                                {song.title}
+                            </div>
+                            <div className="song-details song-artist">
+                                {song.artist}
+                            </div>
+                            <div className="song-details song-label">
+                                {song.label}
+                            </div>
+                            <div className="song-details song-released">
+                                {song.released}
+                            </div>
+                            <div className="song-control">
+                                <button className="song-btn" onClick={() => this.updateSongClicked(song.id)}>Edit
+                                </button>
+                                <button className="song-btn" onClick={() => this.deleteSongClicked(song.id)}>Delete
+                                </button>
+                            </div>
+                        </div>
+                )}
+                {/*</div>*/}
 
-                    <tbody>
-                    {this.state.songs.map(
-                        song =>
-                            <tr key={song.id}>
-                                <td>{song.title}</td>
-                                <td>{song.artist}</td>
-                                <td>{song.label}</td>
-                                <td>{song.released}</td>
-                                <td>
-                                    <button onClick={() => this.updateSongClicked(song.id)}>Edit</button>
-                                </td>
-                                <td>
-                                    <button onClick={() => this.deleteSongClicked(song.id)}>Delete</button>
-                                </td>
-                            </tr>
-                    )}
-                    </tbody>
-                </table>
 
                 <div>
                     <button onClick={this.addSongClicked}>Add</button>
                 </div>
-            </div>
+            </section>
 
 
         )
@@ -97,7 +93,7 @@ class SongsComponent extends Component {
         this.props.history.push(`/songs/${id}`)
     }
 
-    addSongClicked(){
+    addSongClicked() {
         this.props.history.push(`/songs/-1`)
     }
 }
