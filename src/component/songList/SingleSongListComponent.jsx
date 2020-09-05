@@ -22,11 +22,11 @@ export class SinglePlayListComponent extends Component {
     render() {
         return (
             <article className="songlist-container">
-                <section className="songlist-content singlist-info">
-                    <div>
+                <section className="songlist-content">
+                    <div className="songlist-content-item">
                         <span>name:</span>{this.state.songList.name}
                     </div>
-                    <div>
+                    <div className="songlist-content-item">
                         <span>owner:</span>{this.state.songList.ownerId}
                     </div>
                 </section>

@@ -39,6 +39,9 @@ class SongsComponent extends Component {
                         <div key={song.id} className="song-row">
 
                             <div className="song-details">
+                                <div className="song-details__item song-img">
+                                    <img src={song.imageUrl + '&size=40x40'} alt="image"/>
+                                </div>
                                 <div className="song-details__item song-title">
                                     {song.title}
                                 </div>

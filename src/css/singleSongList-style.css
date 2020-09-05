@@ -11,21 +11,11 @@ body{
 .songlist-container{
     display: flex;
     flex-direction: row;
-    padding: 10px 0 0 30px;
-    /*/todo проверить*/
-    height: 100vh;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-.songlist-content{
-    display: flex;
-    flex-direction: column;
-}
-
-.singlist-info{
-    flex-grow: 1;
-    background-color: #eeeeee;
-}
-.singlist-songs{
-    background-color: #e4e3e3;
-    flex-grow: 3;
-}
+/*.songlist-content{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/

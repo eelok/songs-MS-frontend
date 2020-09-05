@@ -16,6 +16,10 @@ body {
     align-items: center;
 }
 
+.single-song-container h1{
+    font-size: 25px;
+    padding: 10px;
+}
 .single-song-box{
     width: 50%;
 }
