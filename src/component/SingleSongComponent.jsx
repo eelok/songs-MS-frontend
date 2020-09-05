@@ -28,23 +28,23 @@ class SingleSongComponent extends Component {
                 <h1>Song</h1>
                 <form onSubmit={this.handleSaveClicked} className="single-song-box">
                     <div className="single-song-item">
-                        <h4>Title:</h4>
+                        <label>Title:</label>
                         <input type="text" name="title" defaultValue={this.state.title} required/>
                     </div>
                     <div className="single-song-item">
-                        <h4>Artist:</h4>
+                        <label>Artist:</label>
                         <input type="text" name="artist" defaultValue={this.state.artist} required/>
                     </div>
                     <div className="single-song-item">
-                        <h4>Label:</h4>
+                        <label>Label:</label>
                         <input type="text" name="label" defaultValue={this.state.label} required/>
                     </div>
                     <div className="single-song-item">
-                        <h4>Released:</h4>
+                        <label>Released:</label>
                         <input type="number" name="released" defaultValue={this.state.released} required/>
                     </div>
                     <div className="single-song-item">
-                        <button type="submit">Save</button>
+                        <button className="single-song-btn" type="submit">Save</button>
                     </div>
                 </form>
             </div>
