@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import SongListService from "../../service/SongListService";
 import StorageSessionService from "../../service/StorageSessionService";
 
+import "../../css/singleSongList-style.css";
 
 export class SinglePlayListComponent extends Component {
     constructor(props) {
@@ -20,22 +21,23 @@ export class SinglePlayListComponent extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <span>name: </span>
-                    <div>{this.state.songList.name}</div>
-                    <span>owner: </span>
-                    <div>{this.state.songList.ownerId}</div>
-                    //todo не могу отобразить
-                    {/*<span>public: </span>*/}
-                    {/*<div>{this.state.songList.isPrivate.toString()}</div>*/}
+            <article className="songlist-container">
+                <section className="songlist-content singlist-info">
+                    <div>
+                        <span>name:</span>{this.state.songList.name}
+                    </div>
+                    <div>
+                        <span>owner:</span>{this.state.songList.ownerId}
+                    </div>
+                </section>
+                <section className="songlist-content singlist-songs">
                     <div>
                         {this.state.songList.songs.map(song =>
                             <li key={song.id}> {song.title}, {song.artist}, {song.label}, {song.released}</li>
                         )}
                     </div>
-                </div>
-            </div>
+                </section>
+            </article>
         );
     }
 

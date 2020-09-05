@@ -31,23 +31,26 @@ class SongsComponent extends Component {
                 {this.state.songs.map(
                     song =>
                         <div key={song.id} className="song-row">
-                            <div className="song-details song-title">
-                                {song.title}
-                            </div>
-                            <div className="song-details song-artist">
-                                {song.artist}
-                            </div>
-                            <div className="song-details song-label">
-                                {song.label}
-                            </div>
-                            <div className="song-details song-released">
-                                {song.released}
+                            <div className="song-details">
+                                <div className="song-details__item song-title">
+                                    {song.title}
+                                </div>
+                                <div className="song-details__item song-artist">
+                                    {song.artist}
+                                </div>
+                                <div className="song-details__item song-label">
+                                    {song.label}
+                                </div>
+                                <div className="song-details__item song-released">
+                                    {song.released}
+                                </div>
                             </div>
                             <div className="song-control">
-                                <button className="song-btn" onClick={() => this.updateSongClicked(song.id)}>Edit
+                                <button className="song-btn edit" onClick={() => this.updateSongClicked(song.id)}>Edit
                                 </button>
-                                <button className="song-btn" onClick={() => this.deleteSongClicked(song.id)}>Delete
+                                <button className="song-btn delete" onClick={() => this.deleteSongClicked(song.id)}>Delete
                                 </button>
+                                <button className="song-btn edit" >Add to Playlist</button>
                             </div>
                         </div>
                 )}
@@ -55,7 +58,7 @@ class SongsComponent extends Component {
 
 
                 <div>
-                    <button onClick={this.addSongClicked}>Add</button>
+                    <button className="song-btn upload" onClick={this.addSongClicked}>Add Song</button>
                 </div>
             </section>
 
