@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import SongsService from "../service/SongsService";
 import StorageSessionService from "../service/StorageSessionService";
-import "../css/all-songs-style.css"
+import "../css/all-songs-style.css";
+import addIcon from "../images/add.svg";
 
 
 class SongsComponent extends Component {
@@ -26,11 +27,17 @@ class SongsComponent extends Component {
         }
         return (
             <section className="songs-container">
-                <h1>Top 10: All music genre</h1>
+                <section className="songs-top">
+                    <h1>Top 10: All music genre</h1>
+                    <button className="song-add-btn" onClick={this.addSongClicked}>
+                        <img src={addIcon} alt=""/>
+                    </button>
+                </section>
                 {this.state.message && <div>{this.state.message}</div>}
                 {this.state.songs.map(
                     song =>
                         <div key={song.id} className="song-row">
+
                             <div className="song-details">
                                 <div className="song-details__item song-title">
                                     {song.title}
@@ -57,9 +64,9 @@ class SongsComponent extends Component {
                 {/*</div>*/}
 
 
-                <div>
-                    <button className="song-btn upload" onClick={this.addSongClicked}>Add Song</button>
-                </div>
+                {/*<div>*/}
+                {/*    <button className="song-btn upload" onClick={this.addSongClicked}>Add Song</button>*/}
+                {/*</div>*/}
             </section>
 
 
