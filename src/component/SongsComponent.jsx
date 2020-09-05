@@ -61,12 +61,6 @@ class SongsComponent extends Component {
                             </div>
                         </div>
                 )}
-                {/*</div>*/}
-
-
-                {/*<div>*/}
-                {/*    <button className="song-btn upload" onClick={this.addSongClicked}>Add Song</button>*/}
-                {/*</div>*/}
             </section>
 
 

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import SongsService from "../service/SongsService";
 import StorageSessionService from "../service/StorageSessionService";
+import "../css/SingleSong-style.css"
 
 
 class SingleSongComponent extends Component {
@@ -23,29 +24,29 @@ class SingleSongComponent extends Component {
     render() {
 
         return (
-            <div>
+            <div className="single-song-container">
                 <h1>Song</h1>
-                <div>
-                    <form onSubmit={this.handleSaveClicked}>
-                        <div>
-                            Title:
-                            <input type="text" name="title" defaultValue={this.state.title} required/>
-                        </div>
-                        <div>
-                            Artist:
-                            <input type="text" name="artist" defaultValue={this.state.artist} required/>
-                        </div>
-                        <div>
-                            Label:
-                            <input type="text" name="label" defaultValue={this.state.label} required/>
-                        </div>
-                        <div>
-                            Released:
-                            <input type="number" name="released" defaultValue={this.state.released} required/>
-                        </div>
+                <form onSubmit={this.handleSaveClicked} className="single-song-box">
+                    <div className="single-song-item">
+                        <h4>Title:</h4>
+                        <input type="text" name="title" defaultValue={this.state.title} required/>
+                    </div>
+                    <div className="single-song-item">
+                        <h4>Artist:</h4>
+                        <input type="text" name="artist" defaultValue={this.state.artist} required/>
+                    </div>
+                    <div className="single-song-item">
+                        <h4>Label:</h4>
+                        <input type="text" name="label" defaultValue={this.state.label} required/>
+                    </div>
+                    <div className="single-song-item">
+                        <h4>Released:</h4>
+                        <input type="number" name="released" defaultValue={this.state.released} required/>
+                    </div>
+                    <div className="single-song-item">
                         <button type="submit">Save</button>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         )
     }
@@ -56,7 +57,7 @@ class SingleSongComponent extends Component {
         event.preventDefault();
 
         const token = StorageSessionService.getToken();
-        if(parseInt(this.state.id) === -1){
+        if (parseInt(this.state.id) === -1) {
             SongsService.createSong(token, song)
                 .then(() => {
                     this.props.history.push('/songs')
@@ -73,8 +74,8 @@ class SingleSongComponent extends Component {
 
     componentDidMount() {
         let token = StorageSessionService.getToken();
-        if(parseInt(this.state.id) === -1){
-            return ;
+        if (parseInt(this.state.id) === -1) {
+            return;
         }
         SongsService.retrieveSingleSong(token, this.state.id)
             .then(response => {
