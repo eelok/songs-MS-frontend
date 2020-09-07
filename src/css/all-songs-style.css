@@ -57,12 +57,11 @@ body {
     flex-shrink: 2;
 }
 
-.song-img {
-    padding: 0 5px 0 0;
-}
 
-.song-img img {
-    border: 1px solid #333333;
+.song-details__item.song-img{
+    width: 40px;
+    height: 40px;
+    margin: 5px;
 }
 
 .song-title {

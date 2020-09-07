@@ -3,6 +3,7 @@ import SongListService from "../../service/SongListService";
 import StorageSessionService from "../../service/StorageSessionService";
 
 import "../../css/singleSongList-style.css";
+import "../../css/all-songs-style.css"
 
 export class SinglePlayListComponent extends Component {
     constructor(props) {
@@ -41,13 +42,11 @@ export class SinglePlayListComponent extends Component {
                         {this.state.songList.songs.map(song =>
                             <div key={song.id} className="song-row">
                                 <div className="song-details">
-                                    <div className="song-img">
-                                        <img src={song.imageUrl + '&size=40x40'} alt="image"/>
-                                    </div>
-                                    <div className="song-title">{song.title}</div>
-                                    <div className="song-artist">{song.artist}</div>
-                                    <div className="song-label">{song.label}</div>
-                                    <div className="song-released">{song.released}</div>
+                                    <img className="song-details__item song-img" src={song.imageUrl} alt="image"/>
+                                    <div className="song-details__item song-title">{song.title}</div>
+                                    <div className="song-details__item song-artist">{song.artist}</div>
+                                    <div className="song-details__item song-label">{song.label}</div>
+                                    <div className="song-details__item song-released">{song.released}</div>
                                 </div>
                             </div>
                         )}

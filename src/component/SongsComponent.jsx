@@ -39,9 +39,7 @@ class SongsComponent extends Component {
                         <div key={song.id} className="song-row">
 
                             <div className="song-details">
-                                <div className="song-details__item song-img">
-                                    <img src={song.imageUrl + '&size=40x40'} alt="image"/>
-                                </div>
+                                <img src={song.imageUrl} alt="image" className="song-details__item song-img"/>
                                 <div className="song-details__item song-title">
                                     {song.title}
                                 </div>
@@ -58,9 +56,10 @@ class SongsComponent extends Component {
                             <div className="song-control">
                                 <button className="song-btn edit" onClick={() => this.updateSongClicked(song.id)}>Edit
                                 </button>
-                                <button className="song-btn delete" onClick={() => this.deleteSongClicked(song.id)}>Delete
+                                <button className="song-btn delete"
+                                        onClick={() => this.deleteSongClicked(song.id)}>Delete
                                 </button>
-                                <button className="song-btn edit" >Add to Playlist</button>
+                                <button className="song-btn edit">Add to Playlist</button>
                             </div>
                         </div>
                 )}

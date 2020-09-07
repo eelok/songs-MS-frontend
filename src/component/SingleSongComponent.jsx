@@ -15,7 +15,8 @@ class SingleSongComponent extends Component {
             title: '',
             artist: '',
             label: '',
-            released: ''
+            released: '',
+            imageUrl: '',
         }
 
         this.handleSaveClicked = this.handleSaveClicked.bind(this)
@@ -44,6 +45,10 @@ class SingleSongComponent extends Component {
                         <input type="number" name="released" defaultValue={this.state.released} required/>
                     </div>
                     <div className="single-song-item">
+                        <label>Image:</label>
+                        <input type="text" name="imageUrl" defaultValue={this.state.imageUrl} required/>
+                    </div>
+                    <div className="single-song-item">
                         <button className="single-song-btn" type="submit">Save</button>
                     </div>
                 </form>
@@ -54,6 +59,7 @@ class SingleSongComponent extends Component {
     handleSaveClicked(event) {
         let formData = new FormData(event.target);
         let song = Object.fromEntries(formData);
+        console.log(song)
         event.preventDefault();
 
         const token = StorageSessionService.getToken();
@@ -79,11 +85,13 @@ class SingleSongComponent extends Component {
         }
         SongsService.retrieveSingleSong(token, this.state.id)
             .then(response => {
+                console.log(response.data)
                     this.setState({
                         title: response.data.title,
                         artist: response.data.artist,
                         label: response.data.label,
-                        released: response.data.released
+                        released: response.data.released,
+                        imageUrl: response.data.imageUrl,
                     })
                 }
             )

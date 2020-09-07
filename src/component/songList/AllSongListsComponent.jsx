@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom';
 import SongListService from "../../service/SongListService";
 import StorageSessionService from "../../service/StorageSessionService";
 
+import "../../css/allSongList-style.css"
+
 export class AllSongListsComponent extends Component {
 
 
@@ -17,28 +19,35 @@ export class AllSongListsComponent extends Component {
 
     render() {
         return (
-            <div><h1>All Play Lists</h1>
-                <div>
-                    <div>
-                        <div>
-                            {this.state.songLists.map(
-                                songList =>
-                                    <div key={songList.id}>
-                                        <h4>Name:</h4>
-                                        {songList.name}
-                                        <h4>Owner</h4>
-                                        {songList.ownerId}
-                                        <h4>Public:</h4>
-                                        {songList.isPrivate.toString()}
-                                        <div>
-                                            <Link to={`/songslists/${songList.id}`}>show content</Link>
-                                        </div>
-                                    </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <main className="content-wrapper">
+                <h1>Top playlists</h1>
+                <section className="playlist-line">
+                    {this.state.songLists.map(
+                        songList =>
+                            <div key={songList.id} className="playlist-card">
+                                <img src={songList.imgUrl} alt="image" className="playlist-card__item card-image"/>
+                                <div className="playlist-card__item">
+                                    <span>Name: </span>
+                                    {songList.name}
+                                </div>
+
+                                <div className="playlist-card__item">
+                                    <span>Owner: </span>
+                                    {songList.ownerId}
+                                </div>
+
+                                <div className="playlist-card__item">
+                                    <span>Public: </span>
+                                    {songList.isPrivate.toString()}
+                                </div>
+
+                                <div className="playlist-card__item">
+                                    <Link to={`/songslists/${songList.id}`}>go to songs</Link>
+                                </div>
+                            </div>
+                    )}
+                </section>
+            </main>
         )
     }
 
