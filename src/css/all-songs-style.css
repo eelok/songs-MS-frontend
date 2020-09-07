@@ -24,7 +24,6 @@ body {
 
 .songs-top h1 {
     font-size: 25px;
-    padding: 10px;
 }
 
 .song-row {
@@ -49,9 +48,6 @@ body {
     flex-basis: 100%;
 }
 
-.song-details__item {
-    padding: 10px;
-}
 
 .song-control {
     display: flex;
@@ -59,6 +55,14 @@ body {
     justify-content: flex-end;
     flex-basis: 100%;
     flex-shrink: 2;
+}
+
+.song-img {
+    padding: 0 5px 0 0;
+}
+
+.song-img img {
+    border: 1px solid #333333;
 }
 
 .song-title {

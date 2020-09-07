@@ -21,19 +21,35 @@ export class SinglePlayListComponent extends Component {
 
     render() {
         return (
-            <article className="songlist-container">
-                <section className="songlist-content">
-                    <div className="songlist-content-item">
-                        <span>name:</span>{this.state.songList.name}
+            <article className="playlist-container">
+                <section className="playlist-details">
+                    <div className="playlist-details-item name">
+                        <p>Playlist title:</p>
+                        <h4>{this.state.songList.name}</h4>
                     </div>
-                    <div className="songlist-content-item">
-                        <span>owner:</span>{this.state.songList.ownerId}
+                    <div className="playlist-details-item private">
+                        <p>private:</p>{this.state.songList.isPrivate}
+                    </div>
+                    <div className="playlist-details-item owner">
+                        <div
+                            className="owner-name-icon">{this.state.songList.ownerId && this.state.songList.ownerId[0]}</div>
+                        {this.state.songList.ownerId}
                     </div>
                 </section>
-                <section className="songlist-content singlist-songs">
+                <section className="playlist-all-songs">
                     <div>
                         {this.state.songList.songs.map(song =>
-                            <li key={song.id}> {song.title}, {song.artist}, {song.label}, {song.released}</li>
+                            <div key={song.id} className="song-row">
+                                <div className="song-details">
+                                    <div className="song-img">
+                                        <img src={song.imageUrl + '&size=40x40'} alt="image"/>
+                                    </div>
+                                    <div className="song-title">{song.title}</div>
+                                    <div className="song-artist">{song.artist}</div>
+                                    <div className="song-label">{song.label}</div>
+                                    <div className="song-released">{song.released}</div>
+                                </div>
+                            </div>
                         )}
                     </div>
                 </section>
