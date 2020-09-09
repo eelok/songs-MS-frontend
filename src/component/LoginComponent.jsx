@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import AuthenticationService from "../service/AuthenticationService";
 import "../css/loginPage-style.css"
+import "../css/buttons.css"
 
 
 class LoginComponent extends Component {
@@ -23,7 +24,7 @@ class LoginComponent extends Component {
                     <form className="login-form" onSubmit={this.handleLoginClick}>
                         <input type="text" name="userId" placeholder="user name"/>
                         <input type="password" name="password" placeholder="password"/>
-                        <button className="btn-login">LOGIN</button>
+                        <button className="login-btn">LOGIN</button>
                     </form>
                 </div>
             </div>

@@ -1,9 +1,12 @@
 import React, {Component} from "react";
-import {Link} from 'react-router-dom';
 import SongListService from "../../service/SongListService";
 import StorageSessionService from "../../service/StorageSessionService";
 
 import "../../css/allSongList-style.css"
+import addIcon from "../../images/add.svg";
+import "../../css/buttons.css"
+import PlaylistCard from "./PlaylistCard";
+
 
 export class AllSongListsComponent extends Component {
 
@@ -13,58 +16,59 @@ export class AllSongListsComponent extends Component {
 
         this.state = {
             songLists: []
-        }
+        };
 
+        this.refreshPlaylists = this.refreshPlaylists.bind(this);
+        this.deleteSongListClicked = this.deleteSongListClicked.bind(this);
     }
 
     render() {
         return (
             <main className="content-wrapper">
-                <h1>Top playlists</h1>
+                <section className="playlist-top">
+                    <h1>Top playlists</h1>
+                    <button className="round-add-btn">
+                        <img src={addIcon} alt="plus icon"/>
+                    </button>
+                </section>
+                {this.state.message && <div>{this.state.message}</div>}
                 <section className="playlist-line">
-                    {this.state.songLists.map(
-                        songList =>
-                            <div key={songList.id} className="playlist-card">
-                                <img src={songList.imgUrl} alt="image" className="playlist-card__item card-image"/>
-                                <div className="playlist-card__item">
-                                    <span>Name: </span>
-                                    {songList.name}
-                                </div>
-
-                                <div className="playlist-card__item">
-                                    <span>Owner: </span>
-                                    {songList.ownerId}
-                                </div>
-
-                                <div className="playlist-card__item">
-                                    <span>Public: </span>
-                                    {songList.isPrivate.toString()}
-                                </div>
-
-                                <div className="playlist-card__item">
-                                    <Link to={`/songslists/${songList.id}`}>go to songs</Link>
-                                </div>
-                            </div>
-                    )}
+                    {this.state.songLists.map(songList =>
+                        <PlaylistCard
+                            key={songList.id}
+                            songList={songList}
+                            onDelete={(songListId) => this.deleteSongListClicked(songListId)}
+                        />)
+                    }
                 </section>
             </main>
         )
     }
 
     componentDidMount() {
+        this.refreshPlaylists();
+    }
+
+    refreshPlaylists() {
         let token = StorageSessionService.getToken();
         let userId = StorageSessionService.getUserId();
 
         SongListService.retrieveAllSongLists(token, userId)
-            .then((response) => {
-                console.log(response.data)
+            .then(response => {
                 this.setState({
                     songLists: response.data
                 })
-            })
+            });
     }
 
-    // showContentClicked(id){
-    //     this.props.history.push(`/songslists/${id}`)
-    // }
+    deleteSongListClicked(songListId) {
+        const token = StorageSessionService.getToken();
+        SongListService.deleteSongList(token, songListId)
+            .then(response => {
+                this.setState({
+                    songLists: this.state.songLists.filter(songList => songList.id !== songListId)
+                });
+            });
+    }
+
 }

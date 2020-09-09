@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import SongsService from "../service/SongsService";
 import StorageSessionService from "../service/StorageSessionService";
 import "../css/all-songs-style.css";
+import "../css/buttons.css"
 import addIcon from "../images/add.svg";
 
 
@@ -29,8 +30,8 @@ class SongsComponent extends Component {
             <section className="songs-container">
                 <section className="songs-top">
                     <h1>Top 10: All music genre</h1>
-                    <button className="song-add-btn" onClick={this.addSongClicked}>
-                        <img src={addIcon} alt=""/>
+                    <button className="round-add-btn" onClick={this.addSongClicked}>
+                        <img src={addIcon} alt="plus icon"/>
                     </button>
                 </section>
                 {this.state.message && <div>{this.state.message}</div>}
@@ -39,7 +40,7 @@ class SongsComponent extends Component {
                         <div key={song.id} className="song-row">
 
                             <div className="song-details">
-                                <img src={song.imageUrl} alt="image" className="song-details__item song-img"/>
+                                <img src={song.imageUrl} alt="songs cover" className="song-details__item song-img"/>
                                 <div className="song-details__item song-title">
                                     {song.title}
                                 </div>
@@ -54,12 +55,11 @@ class SongsComponent extends Component {
                                 </div>
                             </div>
                             <div className="song-control">
-                                <button className="song-btn edit" onClick={() => this.updateSongClicked(song.id)}>Edit
+                                <button className="basic-btn edit" onClick={() => this.updateSongClicked(song.id)}>Edit
                                 </button>
-                                <button className="song-btn delete"
+                                <button className="basic-btn delete"
                                         onClick={() => this.deleteSongClicked(song.id)}>Delete
                                 </button>
-                                <button className="song-btn edit">Add to Playlist</button>
                             </div>
                         </div>
                 )}

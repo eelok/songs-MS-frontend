@@ -42,7 +42,7 @@ export class SinglePlayListComponent extends Component {
                         {this.state.songList.songs.map(song =>
                             <div key={song.id} className="song-row">
                                 <div className="song-details">
-                                    <img className="song-details__item song-img" src={song.imageUrl} alt="image"/>
+                                    <img className="song-details__item song-img" src={song.imageUrl} alt="songs cover"/>
                                     <div className="song-details__item song-title">{song.title}</div>
                                     <div className="song-details__item song-artist">{song.artist}</div>
                                     <div className="song-details__item song-label">{song.label}</div>

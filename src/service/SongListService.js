@@ -14,6 +14,12 @@ class SongListService {
         }});
     }
 
+    deleteSongList(token, songListId){
+        return axios.delete(`http://localhost:8082/songLists/${songListId}`, {headers: {
+                "Authorization": token
+            }});
+    }
+
 
 }
 export default new SongListService();

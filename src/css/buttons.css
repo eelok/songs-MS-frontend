@@ -1,0 +1,68 @@
+
+.login-btn {
+    height: 40px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 1px;
+    border: none;
+    display: inline-block;
+    background: #433E5C;
+    color: #fff;
+    outline: none;
+}
+
+.login-btn:hover {
+    opacity: 0.8;
+}
+
+.basic-btn {
+    cursor: pointer;
+    padding: 5px 15px;
+    border: 1px solid #333;
+    border-radius: 2px;
+    background-color: #ffff;
+    margin: 0 3px 0 3px
+}
+
+
+.basic-btn:hover {
+    outline: none;
+    color: #f4f4f4;
+}
+
+.basic-btn.delete:hover {
+    background-color: #d45079;
+    border: 1px solid #d45079;
+}
+
+.basic-btn.edit:hover {
+    background-color: #575C3E;
+    border: 1px solid #575C3E;
+    opacity: 0.8;
+}
+
+.round-add-btn {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #d45079;
+    border: none;
+    cursor: pointer;
+}
+
+.round-add-btn:hover {
+    opacity: 0.8;
+}
+
+.details-link {
+    color: #433E5C;
+    font-weight: bold;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+.details-link:hover {
+    color: #575C3E;
+    text-decoration: #575C3E;
+
+}

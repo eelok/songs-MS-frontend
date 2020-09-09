@@ -37,8 +37,8 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-
 }
+
 .playlist-details-item.name p{
     font-size: 13px;
 }
