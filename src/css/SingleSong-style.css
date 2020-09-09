@@ -46,18 +46,7 @@ body {
     background-color: #f2f2f2;
 }
 
-.single-song-btn {
+.single-song-item button{
     margin-top: 20px;
-    padding: 10px 30px;
-    font-size: 16px;
     align-self: flex-end;
-    background-color: #433E5C;
-    border: 1px solid #433E5C;
-    color: #f4f4f4;
-    opacity: 0.9;
-    cursor: pointer;
 }
-.single-song-btn:hover {
-    opacity: 1;
-}
-

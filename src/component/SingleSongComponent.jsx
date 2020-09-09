@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import SongsService from "../service/SongsService";
 import StorageSessionService from "../service/StorageSessionService";
-import "../css/SingleSong-style.css"
+import "../css/SingleSong-style.css";
+import "../css/buttons.css"
 
 
 class SingleSongComponent extends Component {
@@ -49,7 +50,7 @@ class SingleSongComponent extends Component {
                         <input type="text" name="imageUrl" defaultValue={this.state.imageUrl} required/>
                     </div>
                     <div className="single-song-item">
-                        <button className="single-song-btn" type="submit">Save</button>
+                        <button className="save-btn" type="submit">Save</button>
                     </div>
                 </form>
             </div>

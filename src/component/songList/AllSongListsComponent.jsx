@@ -6,6 +6,7 @@ import "../../css/allSongList-style.css"
 import addIcon from "../../images/add.svg";
 import "../../css/buttons.css"
 import PlaylistCard from "./PlaylistCard";
+import {Link} from "react-router-dom";
 
 
 export class AllSongListsComponent extends Component {
@@ -27,9 +28,9 @@ export class AllSongListsComponent extends Component {
             <main className="content-wrapper">
                 <section className="playlist-top">
                     <h1>Top playlists</h1>
-                    <button className="round-add-btn">
+                    <Link className="round-add-btn" to={`/newsongslists/`}>
                         <img src={addIcon} alt="plus icon"/>
-                    </button>
+                    </Link>
                 </section>
                 {this.state.message && <div>{this.state.message}</div>}
                 <section className="playlist-line">
@@ -70,5 +71,4 @@ export class AllSongListsComponent extends Component {
                 });
             });
     }
-
 }

@@ -64,5 +64,17 @@
 .details-link:hover {
     color: #575C3E;
     text-decoration: #575C3E;
+}
 
+.save-btn {
+    padding: 10px 30px;
+    font-size: 16px;
+    background-color: #433E5C;
+    border: 1px solid #433E5C;
+    color: #f4f4f4;
+    cursor: pointer;
+    opacity: 0.9;
+}
+.save-btn:hover {
+    opacity: 1;
 }

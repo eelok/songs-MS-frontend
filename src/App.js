@@ -9,6 +9,7 @@ import {AllSongListsComponent} from "./component/songList/AllSongListsComponent"
 import {SinglePlayListComponent} from "./component/songList/SingleSongListComponent";
 
 import './App.css';
+import {AddNewPlayListComponent} from "./component/songList/AddNewPlayListComponent";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                     <Route path="/songs" component={SongsComponent}/>
                     <Route path="/songslists/:id" component={SinglePlayListComponent}/>
                     <Route path="/songslists" component={AllSongListsComponent}/>
+                    <Route path="/newsongslists" component={AddNewPlayListComponent}/>
                     <Route component={ErrorComponent}/>
                 </Switch>
             </BrowserRouter>
