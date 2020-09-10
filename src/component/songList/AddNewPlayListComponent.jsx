@@ -1,9 +1,11 @@
 import React, {Component} from "react";
 import StorageSessionService from "../../service/StorageSessionService";
 import "../../css/buttons.css"
+import {DropdownSongsSelector} from "./DropdownSongsSelector";
+import SongsService from "../../service/SongsService";
 
 
-export class AddNewPlayListComponent extends Component{
+export class AddNewPlayListComponent extends Component {
 
     constructor(props) {
         super(props);
@@ -12,7 +14,8 @@ export class AddNewPlayListComponent extends Component{
             title: '',
             ownerId: StorageSessionService.getUserId(),
             isPrivate: false,
-            listOfSongs: []
+            listOfSongs: [],
+            addedSongs: []
         }
     }
 
@@ -29,22 +32,40 @@ export class AddNewPlayListComponent extends Component{
                         <h4>Visibility</h4>
                         <label htmlFor="public">Public</label>
                         <input type="checkbox" name="public" id="public"/>
-                        <label htmlFor="private">Public</label>
+                        <label htmlFor="private">Private</label>
                         <input type="checkbox" name="private" id="private"/>
                     </div>
-                    <div>
-                        <label htmlFor="songs-selector">Songs:</label>
-                        <select name="songs-selector" id="songs-selector">
-                            <option value="">Please choose songs</option>
-                            <option value="song">Song1</option>
-                        </select>
-                    </div>
-                    <div>
-                        <button className="save-btn">Save</button>
-                    </div>
+                    <ul>
+                        {this.state.addedSongs.map(song =>
+                            <li key={song.id}>{song.title}</li>
+                        )}
+                    </ul>
+                    <DropdownSongsSelector
+                        listOfSongs={this.state.listOfSongs}
+                        onSongAdded={(song) => {
+                            let addedSongs = this.state.addedSongs;
+                            addedSongs.push(song);
+                            this.setState({
+                                ...this.state,
+                                addedSongs: addedSongs
+                            })
+                        }}
+                    />
+                    <button className="save-btn">Save</button>
+
                 </form>
             </div>
         )
+    }
+
+    componentDidMount() {
+        let token = StorageSessionService.getToken();
+        SongsService.retrieveAllSongs(token)
+            .then((response) => {
+                this.setState({...this.state, listOfSongs: response.data});
+            })
+
+
     }
 
 }
