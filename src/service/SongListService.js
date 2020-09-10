@@ -20,6 +20,12 @@ class SongListService {
             }});
     }
 
+    createNewSongList(token, songList){
+        return axios.post(`http://localhost:8082/songLists/`, songList, {headers: {
+                "Authorization": token
+            }});
+    }
+
 
 }
 export default new SongListService();

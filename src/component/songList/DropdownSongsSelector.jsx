@@ -19,27 +19,28 @@ export class DropdownSongsSelector extends Component {
     render() {
         return (
             <div>
-                <label htmlFor="songs-selector">Songs</label>
-                <select
-                    name="songs-selector"
-                    id="songs-selector"
-                    onChange={(e) => {
-                        this.setState({...this.state, selectedSongId: e.target.value});
-                    }}
-                >
-                    {this.props.listOfSongs.map(
-                        song =>
-                            <option key={song.id} value={song.id}>
-                                {song.title}, {song.artist}, {song.label}, {song.released}
-                            </option>
-                    )}
-                </select>
+                <label>
+                    Songs
+                    <select
+                        onChange={(e) => {
+                            this.setState({...this.state, selectedSongId: e.target.value});
+                        }}
+                    >
+                        {this.props.listOfSongs.map(
+                            song =>
+                                <option key={song.id} value={song.id}>
+                                    {song.title}, {song.artist}, {song.label}, {song.released}
+                                </option>
+                        )}
+                    </select>
+                </label>
                 <button
                     onClick={(e) => {
                         this.props.onSongAdded(this.getSong(this.state.selectedSongId));
                         e.preventDefault();
                     }}
                 >
+
                     Add Song
                 </button>
             </div>
