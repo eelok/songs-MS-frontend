@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import StorageSessionService from "../../service/StorageSessionService";
-import "../../css/buttons.css"
+import "../../css/buttons.css";
+import "../../css/drop-down-song-selector.css"
 
 
 export class DropdownSongsSelector extends Component {
@@ -18,31 +19,35 @@ export class DropdownSongsSelector extends Component {
 
     render() {
         return (
-            <div>
-                <label>
-                    Songs
-                    <select
-                        onChange={(e) => {
-                            this.setState({...this.state, selectedSongId: e.target.value});
-                        }}
-                    >
-                        {this.props.listOfSongs.map(
-                            song =>
-                                <option key={song.id} value={song.id}>
-                                    {song.title}, {song.artist}, {song.label}, {song.released}
-                                </option>
-                        )}
-                    </select>
-                </label>
-                <button
-                    onClick={(e) => {
-                        this.props.onSongAdded(this.getSong(this.state.selectedSongId));
-                        e.preventDefault();
-                    }}
-                >
+            <div className="form-control drop-down-box">
+                <div className="drop-down-header">
+                    <p>Сhoose Songs:</p>
+                </div>
+                <div className="drop-down-content">
+                    <label>
+                        <select className="select"
+                                onChange={(e) => {
+                                    this.setState({...this.state, selectedSongId: e.target.value});
+                                }}
+                        >
+                            {this.props.listOfSongs.map(
+                                song =>
 
-                    Add Song
-                </button>
+                                    <option key={song.id} value={song.id}>
+                                        {song.title}, {song.artist}, {song.label}, {song.released}
+                                    </option>
+                            )}
+                        </select>
+                    </label>
+                    <button className="edit basic-btn"
+                            onClick={(e) => {
+                                this.props.onSongAdded(this.getSong(this.state.selectedSongId));
+                                e.preventDefault();
+                            }}
+                    >
+                        Add Song
+                    </button>
+                </div>
             </div>
         )
     }

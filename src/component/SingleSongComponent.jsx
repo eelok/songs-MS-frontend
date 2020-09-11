@@ -3,6 +3,7 @@ import SongsService from "../service/SongsService";
 import StorageSessionService from "../service/StorageSessionService";
 import "../css/SingleSong-style.css";
 import "../css/buttons.css"
+import {TextInput} from "./TextInput";
 
 
 class SingleSongComponent extends Component {
@@ -29,6 +30,7 @@ class SingleSongComponent extends Component {
             <div className="single-song-container">
                 <h1>Song</h1>
                 <form onSubmit={this.handleSaveClicked} className="single-song-box">
+                    <TextInput label={"Title:"} name={"name"} />
                     <div className="single-song-item">
                         <label>Title:</label>
                         <input type="text" name="title" defaultValue={this.state.title} required/>

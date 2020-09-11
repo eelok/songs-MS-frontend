@@ -1,0 +1,28 @@
+.drop-down-box{
+    display: flex;
+    flex-direction: column;
+}
+.drop-down-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.select {
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 10px;
+    border: 1px solid #bebebe;
+    border-radius: 2px;
+    background-color: #ffffff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select:hover,
+.select:focus{
+    cursor: pointer;
+}

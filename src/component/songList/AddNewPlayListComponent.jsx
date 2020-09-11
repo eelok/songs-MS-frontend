@@ -1,10 +1,13 @@
 import React, {Component} from "react";
 import StorageSessionService from "../../service/StorageSessionService";
-import "../../css/buttons.css"
 import {DropdownSongsSelector} from "./DropdownSongsSelector";
 import SongsService from "../../service/SongsService";
-import {RadioPrivatePublic} from "./RadioPrivatePublic";
+import {Radio} from "./Radio";
 import SongListService from "../../service/SongListService";
+import {TextInput} from "../TextInput";
+
+import "../../css/addPlaylist-style.css";
+import "../../css/buttons.css";
 
 
 export class AddNewPlayListComponent extends Component {
@@ -13,9 +16,7 @@ export class AddNewPlayListComponent extends Component {
         super(props);
 
         this.state = {
-            title: '',
             ownerId: StorageSessionService.getUserId(),
-            isPrivate: true,
             listOfSongs: [],
             addedSongs: []
         }
@@ -23,21 +24,12 @@ export class AddNewPlayListComponent extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSaveClicked}>
-                    <h1>Your new Playlist</h1>
-                    <div>
-                        <label htmlFor="title">Title</label>
-                        <input type="text" name="title" id="title"/>
-                    </div>
-                    <RadioPrivatePublic
-                        isPrivate={this.state.isPrivate}
-                    />
-                    <ul>
-                        {this.state.addedSongs.map(song =>
-                            <li key={song.id}>{song.title}</li>
-                        )}
-                    </ul>
+            <div className="content-wrapper-light">
+                <form onSubmit={this.handleSaveClicked} className="form">
+                    <h1>Your New Playlist</h1>
+                    <TextInput label={"Title:"} name={"name"} />
+                    <TextInput label={"Link to image:"} name={"imgUrl"} />
+                    <Radio isPrivate={true} />
                     <DropdownSongsSelector
                         listOfSongs={this.state.listOfSongs}
                         onSongAdded={(song) => {
@@ -53,10 +45,17 @@ export class AddNewPlayListComponent extends Component {
                                ...this.state,
                                listOfSongs: this.state.listOfSongs.filter(s => s.id !== song.id)
                            })
-
                         }}
                     />
-                    <button className="save-btn" type="submit">Save</button>
+                    <ul className="form-control added-content">
+                        <span>Selected songs:</span>
+                        {this.state.addedSongs.map(song =>
+                            <li key={song.id}>{song.title} {song.artist} {song.label} {song.released}</li>
+                        )}
+                    </ul>
+                    <div className="form-control button-item">
+                        <button className="save-btn" type="submit">Save</button>
+                    </div>
                 </form>
             </div>
         )

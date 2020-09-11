@@ -1,0 +1,19 @@
+
+.form-control.radio-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.radio-group{
+    display: flex;
+    flex-direction: row;
+}
+
+.radio-control{
+    display: flex;
+    margin-right: 10px;
+    height: 100%;
+}
+.radio-control input{
+    border: 1px solid #433E5C;
+}

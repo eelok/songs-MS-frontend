@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.content-wrapper-light{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.form {
+    width: 50%;
+}
+
+.form h1{
+    font-size: 25px;
+    padding: 10px;
+}
+
+.button-item button{
+    align-self: flex-end;
+    margin-top: 10px;
+}
+
+.added-content {
+    background-color: #f2f2f2;
+    width: 100%;
+}
+
+.added-content li{
+    list-style: none;
+}
+
