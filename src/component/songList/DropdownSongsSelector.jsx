@@ -39,7 +39,7 @@ export class DropdownSongsSelector extends Component {
                             )}
                         </select>
                     </label>
-                    <button className="edit basic-btn"
+                    <button className="basic-btn add-song-playlist"
                             onClick={(e) => {
                                 this.props.onSongAdded(this.getSong(this.state.selectedSongId));
                                 e.preventDefault();

@@ -78,3 +78,14 @@
 .save-btn:hover {
     opacity: 1;
 }
+
+.basic-btn.add-song-playlist{
+    border: 1px solid #bebebe;
+    color: #333333;
+    font-size: 14px;
+}
+.basic-btn.add-song-playlist:hover{
+    color: #f4f4f4;
+    background-color: #575C3E;
+    border: 1px solid #575C3E;
+}
