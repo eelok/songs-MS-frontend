@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import SongsService from "../service/SongsService";
-import StorageSessionService from "../service/StorageSessionService";
-import "../css/SingleSong-style.css";
-import "../css/buttons.css"
-import {TextInput} from "./TextInput";
+import SongsService from "../../service/SongsService";
+import StorageSessionService from "../../service/StorageSessionService";
+import "../../css/SingleSong-style.css";
+import "../../css/buttons.css"
+import {TextInput} from "../TextInput";
 
 
 class SingleSongComponent extends Component {
@@ -21,7 +21,6 @@ class SingleSongComponent extends Component {
             imageUrl: '',
         }
 
-        this.handleSaveClicked = this.handleSaveClicked.bind(this)
     }
 
     render() {
@@ -30,23 +29,27 @@ class SingleSongComponent extends Component {
             <div className="single-song-container">
                 <h1>Song</h1>
                 <form onSubmit={this.handleSaveClicked} className="single-song-box">
-                    <TextInput label={"Title:"} name={"name"} />
+                    {/*<TextInput label={"Title:"} name={"name"} defaultValue={this.state.title} required/>*/}
                     <div className="single-song-item">
                         <label>Title:</label>
                         <input type="text" name="title" defaultValue={this.state.title} required/>
                     </div>
+                    {/*<TextInput label={"Artist:"} name={"artist"} defaultValue={this.state.artist} required/>*/}
                     <div className="single-song-item">
                         <label>Artist:</label>
                         <input type="text" name="artist" defaultValue={this.state.artist} required/>
                     </div>
+                    {/*<TextInput label={"Label:"} name={"label"} defaultValue={this.state.label} required/>*/}
                     <div className="single-song-item">
                         <label>Label:</label>
                         <input type="text" name="label" defaultValue={this.state.label} required/>
                     </div>
+                    {/*<TextInput label={"Released:"} name={"released"} defaultValue={this.state.released} required/>*/}
                     <div className="single-song-item">
                         <label>Released:</label>
                         <input type="number" name="released" defaultValue={this.state.released} required/>
                     </div>
+                    {/*<TextInput label={"Link to Image:"} name={"imageUrl"} defaultValue={this.state.imageUrl} required/>*/}
                     <div className="single-song-item">
                         <label>Image:</label>
                         <input type="text" name="imageUrl" defaultValue={this.state.imageUrl} required/>
@@ -59,7 +62,7 @@ class SingleSongComponent extends Component {
         )
     }
 
-    handleSaveClicked(event) {
+    handleSaveClicked =(event) => {
         let formData = new FormData(event.target);
         let song = Object.fromEntries(formData);
         console.log(song)

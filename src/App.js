@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import SongsComponent from './component/SongsComponent.jsx';
+import SongsComponent from './component/songs/SongsComponent.jsx';
 import LoginComponent from './component/LoginComponent.jsx';
-import SingleSongComponent from './component/SingleSongComponent.jsx';
+import SingleSongComponent from './component/songs/SingleSongComponent.jsx';
 import {HeaderComponentWR} from "./component/HeaderComponent";
 import {ErrorComponent} from "./component/AnErrorComponent";
 import {AllSongListsComponent} from "./component/songList/AllSongListsComponent";
@@ -24,7 +24,7 @@ function App() {
                     <Route path="/songs" component={SongsComponent}/>
                     <Route path="/songslists/:id" component={SinglePlayListComponent}/>
                     <Route path="/songslists" component={AllSongListsComponent}/>
-                    <Route path="/newsongslists" component={AddNewPlayListComponent}/>
+                    <Route path="/addsongslists" component={AddNewPlayListComponent}/>
                     {/*<Route component={ErrorComponent}/>*/}
                     <Route path="/test" component={Test}/>
                 </Switch>

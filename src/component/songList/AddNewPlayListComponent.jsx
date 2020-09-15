@@ -39,7 +39,7 @@ export class AddNewPlayListComponent extends Component {
                                 ...this.state,
                                 addedSongs: addedSongs
                             });
-                            //удалить писню, которая была добавлена в addedSongs из listOfSongs
+                            //удалить песню, которая была добавлена в addedSongs из listOfSongs
                             //с помощью  фильтр
                            this.setState({
                                ...this.state,

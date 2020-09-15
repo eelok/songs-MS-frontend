@@ -1,19 +1,14 @@
-import React, {Component} from "react";
+import React from "react";
 import "../css/form-control.css"
 
 
-export class TextInput extends Component {
+export const TextInput = (props) => {
 
-    constructor(props) {
-        super(props);
-    }
+    return (
+        <div className="form-control">
+            <label>{props.label}</label>
+            <input type="text" name={props.name}/>
+        </div>
+    )
 
-    render() {
-        return (
-            <div className="form-control">
-                <label>{this.props.label}</label>
-                <input type="text" name={this.props.name} />
-            </div>
-        )
-    }
 }

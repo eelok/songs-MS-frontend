@@ -28,7 +28,7 @@ export class AllSongListsComponent extends Component {
             <main className="content-wrapper">
                 <section className="playlist-top">
                     <h1>Top playlists</h1>
-                    <Link className="round-add-btn" to={`/newsongslists/`}>
+                    <Link className="round-add-btn" to={`/addsongslists/`}>
                         <img src={addIcon} alt="plus icon"/>
                     </Link>
                 </section>
