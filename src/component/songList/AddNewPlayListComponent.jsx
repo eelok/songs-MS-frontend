@@ -8,6 +8,7 @@ import {TextInput} from "../TextInput";
 
 import "../../css/addPlaylist-style.css";
 import "../../css/buttons.css";
+import {FormAddPlayList} from "./form-add-playlist.component";
 
 
 export class AddNewPlayListComponent extends Component {

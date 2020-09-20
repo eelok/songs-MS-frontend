@@ -1,16 +1,16 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 import SongListService from "../../service/SongListService";
 import StorageSessionService from "../../service/StorageSessionService";
+import {PlayListCardList} from "./playlist-card-list.component";
 
-import "../../css/allSongList-style.css"
 import addIcon from "../../images/add.svg";
+import "../../css/allSongList-style.css"
 import "../../css/buttons.css"
-import PlaylistCard from "./PlaylistCard";
-import {Link} from "react-router-dom";
+
 
 
 export class AllSongListsComponent extends Component {
-
 
     constructor(props) {
         super(props);
@@ -19,8 +19,6 @@ export class AllSongListsComponent extends Component {
             songLists: []
         };
 
-        this.refreshPlaylists = this.refreshPlaylists.bind(this);
-        this.deleteSongListClicked = this.deleteSongListClicked.bind(this);
     }
 
     render() {
@@ -33,15 +31,10 @@ export class AllSongListsComponent extends Component {
                     </Link>
                 </section>
                 {this.state.message && <div>{this.state.message}</div>}
-                <section className="playlist-line">
-                    {this.state.songLists.map(songList =>
-                        <PlaylistCard
-                            key={songList.id}
-                            songList={songList}
-                            onDelete={(songListId) => this.deleteSongListClicked(songListId)}
-                        />)
-                    }
-                </section>
+                <PlayListCardList
+                    songLists={this.state.songLists}
+                    onDelete={(songListId) => this.deleteSongListClicked(songListId)}
+                />
             </main>
         )
     }
@@ -50,7 +43,7 @@ export class AllSongListsComponent extends Component {
         this.refreshPlaylists();
     }
 
-    refreshPlaylists() {
+    refreshPlaylists = () => {
         let token = StorageSessionService.getToken();
         let userId = StorageSessionService.getUserId();
 
@@ -62,7 +55,7 @@ export class AllSongListsComponent extends Component {
             });
     }
 
-    deleteSongListClicked(songListId) {
+    deleteSongListClicked = (songListId) => {
         const token = StorageSessionService.getToken();
         SongListService.deleteSongList(token, songListId)
             .then(response => {

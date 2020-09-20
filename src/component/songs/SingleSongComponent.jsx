@@ -34,11 +34,16 @@ class SingleSongComponent extends Component {
                           label={this.state.label}
                           released={this.state.released}
                           imageUrl={this.state.imageUrl}
+                          onChangeImageUrl={this.handleOnChangeImageUrl}
                 />
             </div>
         )
     }
-
+    handleOnChangeImageUrl = (e) =>{
+        this.setState({
+            imageUrl: e.target.value
+        })
+    }
     handleSaveClicked =(event) => {
         let formData = new FormData(event.target);
         let song = Object.fromEntries(formData);

@@ -14,8 +14,7 @@ class SongsComponent extends Component {
         super(props);
 
         this.state = {
-            songs: [],
-            message: null
+            songs: []
         }
 
     }
@@ -35,7 +34,6 @@ class SongsComponent extends Component {
                         <img src={addIcon} alt="plus icon"/>
                     </button>
                 </section>
-                {this.state.message && <div>{this.state.message}</div>}
                 <SongRowList
                     songs={this.state.songs}
                     onEdit={(songId) => this.editSongClicked(songId)}
@@ -63,10 +61,6 @@ class SongsComponent extends Component {
         let token = StorageSessionService.getToken();
         SongsService.deleteSong(token, id)
             .then(response => {
-                this.setState({
-                    message: `song ${id} was deleted`,
-
-                })
                 this.refreshSongs()
             });
     }
