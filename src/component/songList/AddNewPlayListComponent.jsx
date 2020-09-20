@@ -8,8 +8,6 @@ import {TextInput} from "../TextInput";
 
 import "../../css/addPlaylist-style.css";
 import "../../css/buttons.css";
-import {FormAddPlayList} from "./form-add-playlist.component";
-
 
 export class AddNewPlayListComponent extends Component {
 
@@ -34,6 +32,7 @@ export class AddNewPlayListComponent extends Component {
                     <DropdownSongsSelector
                         listOfSongs={this.state.listOfSongs}
                         onSongAdded={(song) => {
+                            console.log('song to add', song);
                             let addedSongs = this.state.addedSongs;
                             addedSongs.push(song);
                             this.setState({

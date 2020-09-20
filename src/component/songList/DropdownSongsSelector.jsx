@@ -25,14 +25,19 @@ export class DropdownSongsSelector extends Component {
                 </div>
                 <div className="drop-down-content">
                     <label>
-                        <select className="select"
-                                onChange={(e) => {
-                                    this.setState({...this.state, selectedSongId: e.target.value});
-                                }}
+                        <select
+                            className="select"
+                            onChange={(e) => {
+                                console.log('selected value', e.target.value);
+                                if (!e.target.value) {
+                                    return;
+                                }
+                                this.setState({...this.state, selectedSongId: e.target.value});
+                            }}
                         >
+                            <option value="">Choose a song ...</option>
                             {this.props.listOfSongs.map(
                                 song =>
-
                                     <option key={song.id} value={song.id}>
                                         {song.title}, {song.artist}, {song.label}, {song.released}
                                     </option>
@@ -41,8 +46,11 @@ export class DropdownSongsSelector extends Component {
                     </label>
                     <button className="basic-btn add-song-playlist"
                             onClick={(e) => {
-                                this.props.onSongAdded(this.getSong(this.state.selectedSongId));
                                 e.preventDefault();
+                                if (!this.state.selectedSongId) {
+                                    return;
+                                }
+                                this.props.onSongAdded(this.getSong(this.state.selectedSongId));
                             }}
                     >
                         Add Song
