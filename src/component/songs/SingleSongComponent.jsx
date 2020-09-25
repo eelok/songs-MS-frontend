@@ -43,6 +43,7 @@ class SingleSongComponent extends Component {
         this.setState({
             imageUrl: e.target.value
         })
+        console.log(e.target.value)
     }
     handleSaveClicked =(event) => {
         let formData = new FormData(event.target);
