@@ -1,14 +1,14 @@
 import React from "react";
 import {SongRow} from "./song-row.component";
 
-export const SongRowList = (props) => (
+export const SongRowList = ({songs, onEdit, onDelete}) => (
     <>
-        {props.songs.map(song =>
+        {songs.map( song =>
             <SongRow
                 key={song.id}
                 song={song}
-                onEdit={(songId) => props.onEdit(songId)}
-                onDelete={(songId) => props.onDelete(songId)}
+                onEdit={(songId) => onEdit(songId)}
+                onDelete={(songId) => onDelete(songId)}
             />
         )}
     </>

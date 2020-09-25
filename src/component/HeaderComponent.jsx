@@ -19,6 +19,7 @@ class HeaderComponent extends Component{
                         <ul>
                             {userIsLoggedIn && <li><Link to={"/songs"}>Songs</Link></li>}
                             {userIsLoggedIn && <li><Link to={"/songslists"}>Playlists</Link></li>}
+                            {userIsLoggedIn && <li><Link to={"/songstexts"}>Lyrics</Link></li>}
                             {!userIsLoggedIn && <li><Link to={"/login"}>Login</Link></li>}
                             {userIsLoggedIn && <li><Link to={"/login"}
                                                     onClick={StorageSessionService.logout}>Logout</Link></li>}

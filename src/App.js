@@ -10,6 +10,7 @@ import {SinglePlayListComponent} from "./component/songList/SingleSongListCompon
 
 import './App.css';
 import {AddNewPlayListComponent} from "./component/songList/AddNewPlayListComponent";
+import SongsTexts from "./component/page/songs-text.component";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                     <Route path="/songslists/:id" component={SinglePlayListComponent}/>
                     <Route path="/songslists" component={AllSongListsComponent}/>
                     <Route path="/addsongslists" component={AddNewPlayListComponent}/>
+                    <Route path="/songstexts" component={SongsTexts}/>
                     {/*<Route component={ErrorComponent}/>*/}
                 </Switch>
             </BrowserRouter>

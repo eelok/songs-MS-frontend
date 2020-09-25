@@ -10,7 +10,6 @@ export class SinglePlayListComponent extends Component {
         super(props);
 
         this.state = {
-            //todo это наверное не совсем верно
             playListId: this.props.match.params.id,
             songList: {
                 songs: []

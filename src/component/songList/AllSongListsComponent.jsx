@@ -8,8 +8,6 @@ import addIcon from "../../images/add.svg";
 import "../../css/allSongList-style.css"
 import "../../css/buttons.css"
 
-
-
 export class AllSongListsComponent extends Component {
 
     constructor(props) {
