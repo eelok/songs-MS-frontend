@@ -16,7 +16,6 @@ class SongsComponent extends Component {
         this.state = {
             songs: []
         }
-
     }
 
     render() {

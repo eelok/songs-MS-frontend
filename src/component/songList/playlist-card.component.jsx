@@ -5,7 +5,7 @@ import StorageSessionService from "../../service/StorageSessionService";
 import "../../css/allSongList-style.css"
 import "../../css/buttons.css"
 
-export const    PlaylistCard = ({songList, onDelete}) => {
+export const PlaylistCard = ({songList, onDelete}) => {
     let loggedInUserId = StorageSessionService.getUserId();
 
     return (
