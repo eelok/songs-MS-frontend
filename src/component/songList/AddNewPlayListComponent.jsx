@@ -8,6 +8,7 @@ import {TextInput} from "../TextInput";
 
 import "../../css/addPlaylist-style.css";
 import "../../css/buttons.css";
+import {TextInputWithImage} from "../TextInputWithImage";
 
 export class AddNewPlayListComponent extends Component {
 
@@ -26,8 +27,8 @@ export class AddNewPlayListComponent extends Component {
             <div className="content-wrapper-light">
                 <form onSubmit={this.handleSaveClicked} className="form">
                     <h1>Your New Playlist</h1>
-                    <TextInput label={"Title:"} name={"name"} />
-                    <TextInput label={"Link to image:"} name={"imgUrl"} />
+                    <TextInput type="text" label="Title:" name="name" />
+                    <TextInputWithImage type="text" label="Link to image:" name="imgUrl"/>
                     <Radio isPrivate={true} />
                     <DropdownSongsSelector
                         listOfSongs={this.state.listOfSongs}

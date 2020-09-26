@@ -10,16 +10,16 @@ export class TextInputWithImage extends React.Component{
         }
     }
     render() {
-        const {imageUrl} = this.state;
+
         return(
             <>
                 <TextInput {...this.props} onChange={this.handleOnChangeImageUrl}/>
                 <div className="form-control">
                     {
-                        imageUrl ?
+                        this.state.imageUrl ?
                             <>
                             <span>Image: </span>
-                            <img src={this.state.imageUrl} alt="cover"/>
+                            <img src={this.state.imageUrl} alt="cover" className="preview-img"/>
                             </>
                         :
                         null
